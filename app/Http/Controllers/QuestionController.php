@@ -8,6 +8,10 @@ use App\Http\Resources\QuestionResource;
 
 class QuestionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt', ['except'=>['index', 'show' ]]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -32,7 +36,7 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         Question::create($request->all());
-        return respone('Created', 201);
+        return response('Created', 201);
     }
 
     
