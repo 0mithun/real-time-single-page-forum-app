@@ -18,6 +18,8 @@ class Question extends Model
         'user_id'
     ];
 
+    protected $with= ['replies'];
+
     protected static function boot(){
         parent::boot();
         static::creating(function($question){
@@ -36,7 +38,7 @@ class Question extends Model
 
     public function replies()
     {
-        return $this->hasMany(Reply::class);
+        return $this->hasMany(Reply::class)->latest();
     }
 
     public function category()

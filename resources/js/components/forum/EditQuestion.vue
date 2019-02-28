@@ -9,15 +9,6 @@
                         type="text"
                         required
                     ></v-text-field>
-
-                    <!-- <v-autocomplete
-                        :items="categories"
-                        item-text="name"
-                        item-value="id"
-                        v-model="form.category_id"
-                        label="Category"
-                        autocomplete
-                    > -->
                     </v-autocomplete>
 
                     <markdown-editor v-model="form.body"></markdown-editor>

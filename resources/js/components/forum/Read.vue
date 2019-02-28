@@ -5,6 +5,10 @@
     <div v-if="question">
         <edit-question v-if="editing" :data="question"></edit-question>
         <show-question :data="question" v-else></show-question>
+        <br>
+        <replies-question :question="question" mt-4></replies-question>
+        <new-reply :questionSlug="question.slug"></new-reply>
+
     </div>
 </v-container>
 </template>
@@ -12,8 +16,11 @@
 <script>
     import ShowQuestion from "./ShowQuestion";
     import EditQuestion from "./EditQuestion"
+    import RepliesQuestion from '../reply/RepliesQuestion'
+    import NewReply from '../reply/NewReply'
+
     export default {
-        components: { ShowQuestion,EditQuestion },
+        components: { ShowQuestion,EditQuestion,RepliesQuestion, NewReply },
         data() {
             return {
                 question: null,
