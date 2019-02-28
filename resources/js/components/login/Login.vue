@@ -21,6 +21,9 @@
             >
                 Login
             </v-btn>
+            <router-link to='/signup'>
+                <v-btn color="blue" >Sign Up</v-btn>
+            </router-link>
         </v-form>
     </v-container>
 </template>
@@ -37,7 +40,13 @@
         methods: {
             login() {
                 User.login(this.form)
+                // this.$router.push({name:'forum'})
             },
         },
+        created(){
+            if(User.logedIn()){
+                this.$router.push({name:'forum'})
+            }
+        }
     };
 </script>
