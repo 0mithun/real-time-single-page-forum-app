@@ -27,13 +27,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // Category::create($request->all());
         $category = new Category;
         $category->name = $request->name;
         $category->slug = \str_slug($request->name);
         $category->save();
 
-        return response('Created', 201);
+        return response(new CategoryResource($category), 201);
 
     }
 
@@ -76,7 +75,7 @@ class CategoryController extends Controller
             ]
         );
 
-        return response('Updated', 201);
+        return response(new CategoryResource($category), 201);
     }
 
     /**

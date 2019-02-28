@@ -15,7 +15,7 @@
                 items: [
                     {title:'Forum', to:'/forum', show:true},
                     {title:'Ask Question', to:'/ask', show:User.logedIn()},
-                    {title:'Category', to:'/category', show:User.logedIn()},
+                    {title:'Category', to:'/category', show:User.admin()},
                     {title:'Log In', to:'/login', show:!User.logedIn()},
                     {title:'Log Out', to:'/logout', show:User.logedIn()},
                 ]
