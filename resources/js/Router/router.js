@@ -6,8 +6,9 @@ Vue.use(VueRouter)
 import Login from '../components/login/Login'
 import Signup from '../components/login/SignUp'
 import Logout from '../components/login/Logout'
-
-import Forum from '../components/Forum'
+import Forum from '../components/forum/Forum'
+import Read from '../components/forum/Read'
+import AskQuestion from '../components/forum/AskQuestion'
 
 
 
@@ -15,10 +16,13 @@ import Forum from '../components/Forum'
 const routes = [
     { path: '/login', component: Login },
     { path: '/signup', component: Signup },
-    { path: '/forum', component: Forum, name:'forum' },
     { path: '/logout', component: Logout},
-  ]
 
+    { path: '/forum', component: Forum, name:'forum' },
+    { path: '/ask', component: AskQuestion, name:'ask' },
+    { path: '/question/:slug', component: Read, name:'read' },
+  ]
+ 
 
 const router = new VueRouter({
 routes, // short for `routes: routes`,
