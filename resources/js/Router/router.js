@@ -16,6 +16,7 @@ import CreateCategory from '../components/category/CreateCategory'
 
 const routes = [
     { path: '/login', component: Login },
+    { path: '/', component: Forum },
     { path: '/signup', component: Signup },
     { path: '/logout', component: Logout},
 
