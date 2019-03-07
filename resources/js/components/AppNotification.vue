@@ -26,7 +26,8 @@
             return{
                 read:{},
                 unread:{},
-                unreadCount:0
+                unreadCount:0,
+                sound: "http://soundbible.com/mp3/glass_ping-Go445-1207030150.mp3"
             }
         },
         created(){
@@ -36,6 +37,7 @@
 
             Echo.private('App.User.' + User.id())
             .notification((res)=>{
+                this.playSound()
                 this.unread.unshift(res)
                 this.unreadCount++
             })
@@ -62,6 +64,10 @@
                     this.read.push(notification)
                     this.unreadCount--
                 })
+            },
+            playSound(){
+                let alert = new Audio(this.sound)
+                alert.play()
             }
         },
     }

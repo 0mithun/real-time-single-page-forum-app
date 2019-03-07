@@ -1,10 +1,13 @@
 <template>
-    <v-toolbar>
-        <v-toolbar-title>Mithu-It</v-toolbar-title>
+    <v-toolbar color="indigo dark" >
+
+        <v-toolbar-title>
+            <router-link to="/" class="white--text">Mithu-It</router-link> 
+        </v-toolbar-title>
         <v-spacer></v-spacer>
         <app-notification v-if="logedin"></app-notification>
         <div class="hidden-sm-and-down">
-            <router-link v-for="item in items" :key="item.title" :to="item.to" v-if="item.show"><v-btn flat>{{ item.title }}</v-btn></router-link>
+            <router-link v-for="item in items" :key="item.title" :to="item.to" v-if="item.show"><v-btn flat   class="white--text">{{ item.title }}</v-btn></router-link>
         </div>
     </v-toolbar>
 </template>

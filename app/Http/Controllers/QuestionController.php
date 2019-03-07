@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Question;
 use Illuminate\Http\Request;
+use App\Http\Requests\QuestionRequest;
 use App\Http\Resources\QuestionResource;
 
 class QuestionController extends Controller
@@ -33,7 +34,7 @@ class QuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(QuestionRequest $request)
     {
 
         // $request['slug'] = \str_slug($request->title);

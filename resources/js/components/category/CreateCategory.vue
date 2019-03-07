@@ -1,7 +1,11 @@
 <template>
     <v-container>
+        
         <v-card>
             <v-container>
+                <v-alert v-if="errors" type="error" :value="true">
+                    Category name is required
+                </v-alert>
                 <v-form @submit.prevent="submit">
                     <v-text-field
                         label="Category Name"
@@ -10,8 +14,8 @@
                         required
                     >
                     </v-text-field>
-                    <v-btn type="submit" color="blue" v-if="editSlug">Update</v-btn>
-                    <v-btn type="submit" color="green" v-else>Create</v-btn>
+                    <v-btn type="submit" :disabled="disabled" color="blue" v-if="editSlug">Update</v-btn>
+                    <v-btn type="submit" :disabled="disabled" color="green" v-else>Create</v-btn>
                 </v-form>
                 <v-card>
                     <v-toolbar color="indigo" dark dense>
@@ -54,7 +58,13 @@
                 },
                 categories: {},
                 editSlug:null,
+                errors:null
             };
+        },
+        computed:{
+            disabled(){
+                return !this.form.name
+            }
         },
         methods: {
             submit(){
@@ -65,6 +75,8 @@
                 .then(res => {
                     this.categories.unshift(res.data)
                     this.form.name = null
+                }).catch(err=>{
+                    this.errors = err.response.data.errors
                 });
             },
             destroy(slug, index){
