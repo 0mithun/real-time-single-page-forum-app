@@ -33,7 +33,14 @@
             if(User.logedIn()){
                 this.getNotifications()
             }
+
+            Echo.private('App.User.' + User.id())
+            .notification((res)=>{
+                this.unread.unshift(res)
+                this.unreadCount++
+            })
         },
+
         computed:{
             color(){
                 return this.unreadCount > 0 ? 'red':'red lighten-4'

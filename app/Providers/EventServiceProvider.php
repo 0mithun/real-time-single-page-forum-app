@@ -2,6 +2,11 @@
 
 namespace App\Providers;
 
+use App\Events\LikeEvent;
+use App\Events\DeleteReplyEvent;
+use App\Listeners\DeleteReplyListener;
+use App\Listeners\LikeEventListener;
+
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -15,8 +20,14 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        Registered::class => [
-            SendEmailVerificationNotification::class,
+        // Registered::class => [
+        //     SendEmailVerificationNotification::class,
+        // ],
+        LikeEvent::class => [
+            LikeEventListener::class,
+        ],
+        DeleteReplyEvent::class => [
+            DeleteReplyListener::class,
         ],
     ];
 

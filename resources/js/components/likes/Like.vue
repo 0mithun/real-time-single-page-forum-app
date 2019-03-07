@@ -20,6 +20,15 @@
                 return this.liked? 'red':'red lighten-4'
             }
         },
+        created(){
+            Echo.channel('likeChannel')
+                .listen('LikeEvent', (e) =>{
+                    console.log(e)
+                     if(this.content.id == e.id){
+                         e.type == 1? this.count++:this.count--
+                     }
+                })
+        },
         methods: {
             likeIt() {
                 if(User.logedIn()){
