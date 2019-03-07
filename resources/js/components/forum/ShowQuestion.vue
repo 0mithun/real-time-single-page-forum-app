@@ -12,7 +12,7 @@
                     </span>
                 </div>
                 <v-spacer></v-spacer>
-                <v-btn color="teal" dark>{{ data.reply_count }} Replies</v-btn>
+                <v-btn color="teal" dark>{{ replyCount }} Replies</v-btn>
             </v-card-title>
             <v-card-text v-html="body"></v-card-text>
             <v-card-actions v-if="own">
@@ -32,13 +32,33 @@
         props: ["data"],
         data(){
             return{
-                own: User.own(this.data.user_id)
+                own: User.own(this.data.user_id),
+                replyCount: this.data.reply_count
             }
         },
         computed:{
             body(){
                 return md.parse(this.data.body)
             }
+        },
+        created(){
+            EventBus.$on('newReply',()=>{
+                this.replyCount++
+            })
+            EventBus.$on('deleteReply',()=>{
+                this.replyCount--
+            })
+
+            Echo.private('App.User.' + User.id())                
+                .notification( (notification) =>{
+                    this.replyCount++
+            });
+
+            Echo.channel('DeleteReply')
+                .listen('DeleteReplyEvent', (e)=>{
+                this.replyCount--    
+            })
+
         },
         methods: {
             destroy() {

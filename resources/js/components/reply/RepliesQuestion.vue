@@ -32,9 +32,11 @@
                 });
 
                 Echo.private('App.User.' + User.id())
+                
                     .notification( (notification) =>{
                         this.content.unshift(notification.reply)
                     });
+                
                 Echo.channel('DeleteReply')
                     .listen('DeleteReplyEvent', (e)=>{
                         for(let index = 0; index<this.content.length; index++){
@@ -42,7 +44,7 @@
                                 this.content.splice(index, 1)
                             }
                         }
-                    })
+                })
             },
         }
     }

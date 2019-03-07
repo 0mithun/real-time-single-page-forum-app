@@ -44,6 +44,9 @@ window.EventBus = new Vue()
 import md from 'marked'
 window.md = md
 
+import Exception from './Helpers/Exception'
+window.Exception = Exception
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

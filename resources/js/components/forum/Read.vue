@@ -7,8 +7,9 @@
         <show-question :data="question" v-else></show-question>
         <br>
         <replies-question :question="question" mt-4></replies-question>
-        <new-reply :questionSlug="question.slug"></new-reply>
-
+        <new-reply v-if="logedIn" :questionSlug="question.slug"></new-reply>
+        
+        <router-link v-else to="/login"> <v-btn color="default">Login to Reply</v-btn> </router-link>
     </div>
 </v-container>
 </template>
@@ -26,6 +27,11 @@
                 question: null,
                 editing: false
             };
+        },
+        computed:{
+            logedIn(){
+                return User.logedIn()
+            }
         },
         created() {
             this.listen();

@@ -7,6 +7,11 @@ use App\Http\Resources\NotificationResource;
 
 class NotificationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt');
+    }
+
     public function index()
     {
         return [
