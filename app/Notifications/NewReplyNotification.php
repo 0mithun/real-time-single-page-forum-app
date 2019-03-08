@@ -46,10 +46,11 @@ class NewReplyNotification extends Notification
     {
         return [
             'replyBy'       =>  $this->reply->user->name,
-            'question'    =>  $this->reply->question->title,
+            'question'      =>  $this->reply->question->title,
             'path'          =>  $this->reply->question->path
         ];
     }
+    
 
     public function toBroadcast($notifiable)
     {

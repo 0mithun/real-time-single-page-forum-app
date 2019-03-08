@@ -21,7 +21,7 @@ class LikeController extends Controller
     public function unlikeIt(Reply $reply)
     {
         $reply->like()->where('user_id', auth()->id())->first()->delete();
-        \broadcast(new LikeEvent($reply->id, 1 ))->toOthers();
+        \broadcast(new LikeEvent($reply->id, 2 ))->toOthers();
     }
    
 }

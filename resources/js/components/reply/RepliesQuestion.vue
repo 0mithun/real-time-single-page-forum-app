@@ -32,7 +32,6 @@
                 });
 
                 Echo.private('App.User.' + User.id())
-                
                     .notification( (notification) =>{
                         this.content.unshift(notification.reply)
                     });
