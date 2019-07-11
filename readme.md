@@ -5,9 +5,9 @@
 
 Clone the repo
 
-Run `composer install`
-Run `cp .env.example .env`
-Run `php artisan migrate --seed`
+- Run `composer install`
+- Run `cp .env.example .env`
+- Run `php artisan migrate --seed`
 
 ## Contributation Guideline
 * Fork the repo
