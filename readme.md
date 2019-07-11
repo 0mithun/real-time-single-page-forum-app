@@ -1,7 +1,7 @@
 # This is a real time single page forum app.
 ## We are going to use Laravel, Vuejs, Pusher, Vuetify, JWT, and markdown
 
-# Installation Instructions
+## Installation Instructions
 
 Clone the repo
 
