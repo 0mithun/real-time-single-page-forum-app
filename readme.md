@@ -4,11 +4,12 @@
 # Installation Instructions
 
 Clone the repo
-Run composer install
+
+Run `composer install`
 Run `cp .env.example .env`
 Run `php artisan migrate --seed`
-Package Used
-Contributation Guideline
+
+## Contributation Guideline
 Fork the repo
 Clone the repollly
 Run `git checkout dev`
