@@ -3,11 +3,16 @@
 
 ## Installation Instructions
 
-Clone the repo
-
 - Run `composer install`
 - Run `cp .env.example .env`
+- Run `php artisan key:generate`
+- Set your database configration to .env 
 - Run `php artisan migrate --seed`
+- Set your pusher aky information to .env
+
+## Run Application
+- run `php artisan serve`
+
 
 ## Contributation Guideline
 * Fork the repo
